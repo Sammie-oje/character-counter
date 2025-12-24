@@ -4,7 +4,8 @@
     font-family: dmSans;
     font-display: swap;
     font-style: normal;
-    src: url("assets/fonts/DM_Sans/DMSans-VariableFont_opsz,wght.ttf");
+    font-weight: 400 600 700;
+    src: url("/assets/fonts/DM_Sans/DMSans-VariableFont_opsz,wght.ttf");
 }
 
 @theme {
@@ -14,7 +15,7 @@
     --color-neutral-700: hsl(235, 13%, 19%);
     --color-neutral-600: hsl(234, 14%, 29%);
     --color-neutral-200: hsl(240, 26%, 92%);
-    --color-neutral-100: hsl(240, 24%, 65%);
+    --color-neutral-100: hsl(240, 24%, 96%);
     --color-neutral-0: hsl(0, 0%, 100%);
     --color-purple-400: hsl(274, 90%, 80%);
     --color-purple-500: hsl(274, 90%, 73%);
@@ -43,5 +44,27 @@
     --spacing-500: 2.5rem;
     --spacing-600: 3rem;
     --spacing-800: 4rem;
-    --spacing-1000: 5rem
+    --spacing-1000: 5rem;
+    /*Text presets*/
+    --text-preset-1: 4rem;
+    --text-preset-1--line-height: 100%;
+    --text-preset-1--letter-spacing: -1px;
+
+    --text-preset-2: 1.5rem;
+    --text-preset-2--line-height: 130%;
+    --text-preset-2--letter-spacing: -1px;
+
+    --text-preset-mobile: 2.5rem;
+    --text-preset-mobile--line-height: 100%;
+    --text-preset-mobile--letter-spacing: -1px;
+
+    --text-preset-3: 1.25rem;
+    --text-preset-3--line-height: 140%;
+    --text-preset-3--letter-spacing: -0.6px;
+
+    --text-preset-4: 1rem;
+    --text-preset-4--line-height: 130%;
+    --text-preset-4--letter-spacing: -0.6px;
+    
+    --breakpoint-xxl: 90rem;
 }
