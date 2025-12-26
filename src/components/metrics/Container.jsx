@@ -3,7 +3,7 @@ import Stat from "./Stat.jsx";
 
 function StatDensityContainer() {
     return (
-        <section className="px-200 flex flex-col gap-300 md:px-400">
+        <section className="px-200 flex flex-col gap-300 md:px-400 ">
             <dl
                 className="flex flex-col gap-200 h-[422px] w-full md:flex-row md:h-[150px]"
                 aria-live="polite"

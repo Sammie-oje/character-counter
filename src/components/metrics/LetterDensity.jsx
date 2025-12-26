@@ -2,7 +2,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 function LetterDensity() {
     return (
-        <div className="flex flex-col gap-250">
+        <div className="flex flex-col gap-250 dark:text-neutral-200">
             <h3 className="text-preset-2">Letter Density</h3>
 
             <dl className="flex flex-col gap-150">
@@ -28,7 +28,7 @@ function DensityList({ percent, wordCount, letter }) {
                 <code>{letter}</code>
             </dt>
             <dd className="contents">
-                <div className="w-full h-[12px] rounded-full bg-neutral-100">
+                <div className="w-full h-[12px] rounded-full bg-neutral-100 dark:bg-neutral-800">
                     <div className="w-20 h-[12px] rounded-full bg-purple-400"></div>
                 </div>
                 <output>
