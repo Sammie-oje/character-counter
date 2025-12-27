@@ -32,7 +32,7 @@ function App() {
 
             <TextArea value={textValue} onTextValue={handleTextValue} />
 
-            <StatDensityContainer />
+            <StatDensityContainer value={textValue}/>
         </>
     );
 }
