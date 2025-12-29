@@ -5,10 +5,13 @@ import { countCharacters } from "../../utils/character-count.js";
 import { countWords } from "../../utils/word-count.js";
 import { countSentence } from "../../utils/sentence-count.js";
 
+import { getAnalytics } from "../../utils/letter-density.js";
+
 function StatDensityContainer({ value }) {
     return (
         <section className="px-200 flex flex-col gap-300 md:px-400 ">
-            <dl className="flex flex-col gap-200 h-[422px] w-full md:flex-row md:h-[150px]"
+            <dl
+                className="flex flex-col gap-200 h-[422px] w-full md:flex-row md:h-[150px]"
                 aria-live="polite"
             >
                 <Stat
@@ -30,7 +33,7 @@ function StatDensityContainer({ value }) {
                     onCount={countSentence(value)}
                 />
             </dl>
-            <LetterDensity />
+            <LetterDensity charDensity={getAnalytics(value)}/>
         </section>
     );
 }
