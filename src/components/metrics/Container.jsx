@@ -6,8 +6,9 @@ import { countWords } from "../../utils/word-count.js";
 import { countSentence } from "../../utils/sentence-count.js";
 
 import { getAnalytics } from "../../utils/letter-density.js";
+import { excludeSpaces } from "../../utils/exclude-spaces.js";
 
-function StatDensityContainer({ value }) {
+function StatDensityContainer({ value, spaceBoxValue }) {
     return (
         <section className="px-200 flex flex-col gap-300 md:px-400 ">
             <dl
@@ -18,7 +19,7 @@ function StatDensityContainer({ value }) {
                     bgColor={"bg-purple-400"}
                     id={"character-count"}
                     text={"Total Characters"}
-                    onCount={countCharacters(value)}
+                    onCount={spaceBoxValue?excludeSpaces(value):countCharacters(value)}
                 />
                 <Stat
                     bgColor={"bg-yellow-500"}
@@ -33,7 +34,7 @@ function StatDensityContainer({ value }) {
                     onCount={countSentence(value)}
                 />
             </dl>
-            <LetterDensity charDensity={getAnalytics(value)}/>
+            <LetterDensity charDensity={getAnalytics(value)} />
         </section>
     );
 }

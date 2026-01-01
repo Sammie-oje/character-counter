@@ -20,6 +20,11 @@ function App() {
         setTextValue(e.target.value);
     };
 
+    const [isSpaceBoxChecked, setIsSpaceBoxChecked] = useState(false);
+
+    const handleSpaceBox = e => {
+        setIsSpaceBoxChecked(e.target.checked);
+    };
     return (
         <>
             <Header />
@@ -30,9 +35,17 @@ function App() {
                 </h1>
             </div>
 
-            <TextArea value={textValue} onTextValue={handleTextValue} />
+            <TextArea
+                value={textValue}
+                onTextValue={handleTextValue}
+                spaceChecked={isSpaceBoxChecked}
+                onSpaceChecked={handleSpaceBox}
+            />
 
-            <StatDensityContainer value={textValue}/>
+            <StatDensityContainer
+                value={textValue}
+                spaceBoxValue={isSpaceBoxChecked}
+            />
         </>
     );
 }
