@@ -8,7 +8,7 @@ function Stat({ bgColor, id, text, onCount }) {
                 <dt className="text-preset-mobile md:text-preset-1">
                     {onCount ? onCount : "00"}
                 </dt>
-                <dd className="text-preset-3">{text}</dd>
+                <dd className="text-preset-3 z-100">{text}</dd>
             </div>
             <figure className="absolute -top-2 -right-15 ">
                 <img src={`assets/images/pattern-${id}.svg`} alt={`${id}-bg`} />

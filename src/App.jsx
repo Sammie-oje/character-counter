@@ -3,6 +3,8 @@ import Header from "./components/Header.jsx";
 import TextArea from "./components/TextArea.jsx";
 import StatDensityContainer from "./components/metrics/Container.jsx";
 
+import { getLimitedText } from "./utils/character-limit.js";
+
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { library } from "@fortawesome/fontawesome-svg-core";
 
@@ -13,6 +15,11 @@ import { fab } from "@fortawesome/free-brands-svg-icons";
 library.add(fas, far, fab);
 
 function App() {
+    const [numberValue, setNumberValue] = useState("");
+    const handleNumberValue = e => {
+        setNumberValue(e.target.value);
+    };
+
     //State to manage the value of the textarea element
     const [textValue, setTextValue] = useState("");
     //Update the value of textValue anytime there is a change in value
@@ -20,11 +27,21 @@ function App() {
         setTextValue(e.target.value);
     };
 
-    const [isSpaceBoxChecked, setIsSpaceBoxChecked] = useState(false);
+    const limitedText = numberValue
+        ? getLimitedText(textValue, numberValue)
+        : textValue;
 
+    const [isSpaceBoxChecked, setIsSpaceBoxChecked] = useState(false);
     const handleSpaceBox = e => {
         setIsSpaceBoxChecked(e.target.checked);
     };
+
+    const [isLimitBoxChecked, setIsLimitBoxChecked] = useState(false);
+    const handleLimitBox = e => {
+        setIsLimitBoxChecked(e.target.checked);
+        isLimitBoxChecked ? null : setNumberValue("");
+    };
+
     return (
         <>
             <Header />
@@ -36,15 +53,20 @@ function App() {
             </div>
 
             <TextArea
-                value={textValue}
+                value={limitedText}
                 onTextValue={handleTextValue}
                 spaceChecked={isSpaceBoxChecked}
                 onSpaceChecked={handleSpaceBox}
+                limitChecked={isLimitBoxChecked}
+                onLimitChecked={handleLimitBox}
+                numberValue={numberValue}
+                onNumberValue={handleNumberValue}
             />
 
             <StatDensityContainer
-                value={textValue}
+                value={limitedText}
                 spaceBoxValue={isSpaceBoxChecked}
+                numberValue={numberValue}
             />
         </>
     );

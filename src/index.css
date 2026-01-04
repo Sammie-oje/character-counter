@@ -18,7 +18,10 @@
         @apply cursor-pointer appearance-none size-4 border border-neutral-900 rounded-4 checked:bg-purple-400 checked:bg-[url('assets/images/icon-check.svg')] bg-no-repeat bg-center checked:border-none focus:outline-2 checked:focus:border-none focus:outline-purple-400 focus:outline-offset-2 focus:border-1 focus:border-neutral-200 dark:border-neutral-200 dark:focus:shadow-[0_0_0px_2px] dark:focus:shadow-white dark:focus:border dark:focus:border-neutral-200 dark:focus:bg-white dark:focus:checked:bg-purple-400;
     }
     .textarea {
-        @apply p-150 bg-neutral-100 border-2 border-neutral-200 rounded-12 h-[200px] w-full resize-none text-neutral-700 text-preset-3 cursor-pointer focus:shadow-[0_0_8px_2px] focus:shadow-purple-500/60 focus:outline-2 focus:outline-purple-500 focus:bg-neutral-200 dark:bg-neutral-800 dark:border-neutral-700 dark:text-neutral-200 dark:focus:bg-neutral-800;
+        @apply p-150 bg-neutral-100 border-2 border-neutral-200 rounded-12 h-[200px] w-full resize-none text-neutral-700 text-preset-3 cursor-pointer focus:shadow-[0_0_8px_2px] focus:shadow-purple-500 focus:outline-2 focus:outline-purple-500 focus:bg-neutral-200 dark:bg-neutral-800 dark:border-neutral-700 dark:text-neutral-200 dark:focus:bg-neutral-800;
+    }
+    .alert {
+        @apply shadow-[0_0_8px_2px] shadow-orange-800 outline-2 outline-orange-800 dark:shadow-orange-500 dark:outline-orange-500;
     }
 }
 

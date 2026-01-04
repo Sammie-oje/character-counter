@@ -7,8 +7,11 @@ import { countSentence } from "../../utils/sentence-count.js";
 
 import { getAnalytics } from "../../utils/letter-density.js";
 import { excludeSpaces } from "../../utils/exclude-spaces.js";
+import { getLimitedText } from "../../utils/character-limit.js";
 
-function StatDensityContainer({ value, spaceBoxValue }) {
+function StatDensityContainer({ value, spaceBoxValue, numberValue }) {
+    
+
     return (
         <section className="px-200 flex flex-col gap-300 md:px-400 ">
             <dl
@@ -18,8 +21,16 @@ function StatDensityContainer({ value, spaceBoxValue }) {
                 <Stat
                     bgColor={"bg-purple-400"}
                     id={"character-count"}
-                    text={"Total Characters"}
-                    onCount={spaceBoxValue?excludeSpaces(value):countCharacters(value)}
+                    text={
+                        spaceBoxValue
+                            ? "Total Characters (no space)"
+                            : "Total Characters"
+                    }
+                    onCount={
+                        spaceBoxValue
+                            ? excludeSpaces(value)
+                            : countCharacters(value)
+                    }
                 />
                 <Stat
                     bgColor={"bg-yellow-500"}

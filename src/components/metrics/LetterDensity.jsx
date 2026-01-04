@@ -54,9 +54,9 @@ function LetterDensity({ charDensity }) {
     );
 }
 
-function DensityList({ percent, wordCount, letter, key }) {
+function DensityList({ percent, wordCount, letter }) {
     return (
-        <div className="flex items-center gap-[0.875rem] text-preset-4">
+        <div className="flex gap-[0.875rem]  items-center text-preset-4">
             <dt>
                 <code>{letter}</code>
             </dt>
