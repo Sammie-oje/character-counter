@@ -4,7 +4,8 @@ Return all these values as a nice pretty looking array of objects
 */
 const filterValue = value => {
     const characters = value.toUpperCase().split("");
-    const regex = /[A-Za-z0-9]+/;
+    const regex =
+        /[A-Za-z0-9]/; /*Changed from [A-Za-z0-9]+ to [A-Za-z0-9] because the former matches more than one occurrences of the expected value if they are together, though the split("") handles this no harm double proofing*/
     const filteredValue = characters.filter(character => regex.test(character));
     return filteredValue;
 };
