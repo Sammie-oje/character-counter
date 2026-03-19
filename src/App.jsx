@@ -1,6 +1,6 @@
 import { useState } from "react";
 import Header from "./components/Header.jsx";
-import TextArea from "./components/TextArea.jsx";
+import TextArea from "./components/TextArea/TextArea.jsx";
 import StatDensityContainer from "./components/metrics/Container.jsx";
 
 import { getLimitedText } from "./utils/character-limit.js";
@@ -39,7 +39,9 @@ function App() {
     const [isLimitBoxChecked, setIsLimitBoxChecked] = useState(false);
     const handleLimitBox = e => {
         setIsLimitBoxChecked(e.target.checked);
-        isLimitBoxChecked ? null : setNumberValue("");
+        if (!isLimitBoxChecked) {
+            setNumberValue(curValue => (curValue = ""));
+        }
     };
 
     return (
