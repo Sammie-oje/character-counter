@@ -9,7 +9,7 @@ import { getAnalytics } from "../../utils/letter-density.js";
 import { excludeSpaces } from "../../utils/exclude-spaces.js";
 import { getLimitedText } from "../../utils/character-limit.js";
 
-function StatDensityContainer({ value, isLimitBoxOpen, textValue }) {
+function StatDensityContainer({ value, isSpaceExcluded, textValue }) {
     return (
         <section className="px-200 flex flex-col gap-300 md:px-400 ">
             <dl
@@ -20,12 +20,12 @@ function StatDensityContainer({ value, isLimitBoxOpen, textValue }) {
                     bgColor={"bg-purple-400"}
                     id={"character-count"}
                     text={
-                        isLimitBoxOpen
+                        isSpaceExcluded
                             ? "Total Characters (no space)"
                             : "Total Characters"
                     }
                     onCount={
-                        isLimitBoxOpen
+                        isSpaceExcluded
                             ? excludeSpaces(value)
                             : countCharacters(value)
                     }

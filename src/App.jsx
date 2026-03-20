@@ -31,7 +31,7 @@ function App() {
         }));
     };
 
-    const { textInput, characterLimit, openLimitBox } = formData;
+    const { textInput, characterLimit, openLimitBox , excludeSpaces} = formData;
 
     const limitedText = characterLimit
         ? getLimitedText(textInput, characterLimit)
@@ -55,7 +55,7 @@ function App() {
 
             <StatDensityContainer
                 value={limitedText}
-                isLimitBoxOpen={openLimitBox}
+                isSpaceExcluded={excludeSpaces}
                 textValue={textInput}
             />
         </>

@@ -3,10 +3,17 @@ Then count how many times each character appear and compare to the total number 
 Return all these values as a nice pretty looking array of objects
 */
 const filterValue = value => {
-    const characters = value.toUpperCase().split("");
+    const segmenter = new Intl.Segmenter("en", { granularity: "grapheme" });
+
+    const characters = [...segmenter.segment(value.toUpperCase())].map(
+        s => s.segment
+    );
     const regex =
-        /[A-Za-z0-9]/; /*Changed from [A-Za-z0-9]+ to [A-Za-z0-9] because the former matches more than one occurrences of the expected value if they are together, though the split("") handles this no harm double proofing*/
-    const filteredValue = characters.filter(character => regex.test(character));
+        /[\p{L}\p{N}\p{RGI_Emoji}]/v; /*Match all emojis, any letter in any language, and any number*/
+    const filteredValue = characters
+        .filter(character => regex.test(character))
+      ;
+    console.log(filteredValue);
     return filteredValue;
 };
 
