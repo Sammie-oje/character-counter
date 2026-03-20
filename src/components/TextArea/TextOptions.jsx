@@ -3,12 +3,10 @@ import { countWords } from "../../utils/word-count.js";
 
 function TextOptions({
     value,
-    spaceChecked,
-    onSpaceChecked,
-    limitChecked,
-    onLimitChecked,
-    numberValue,
-    onNumberValue
+    onFormData,
+    isSpaceExcluded,
+    isLimitBoxOpen,
+    characterLimit
 }) {
     return (
         <div className="flex flex-col gap-150 items-start md:flex-row md:justify-between">
@@ -18,11 +16,12 @@ function TextOptions({
                     className="flex items-center gap-[10px]"
                 >
                     <input
+                        name="excludeSpaces"
                         id="exclude-spaces-checkbox"
                         type="checkbox"
                         className="checkbox"
-                        value={spaceChecked}
-                        onChange={onSpaceChecked}
+                        value={isSpaceExcluded}
+                        onChange={onFormData}
                     />
                     <span className="dark:text-neutral-200">
                         Exclude Spaces
@@ -35,24 +34,26 @@ function TextOptions({
                         className="contents"
                     >
                         <input
-                        id="character-limit-checkbox"
+                            name="openLimitBox"
+                            id="character-limit-checkbox"
                             type="checkbox"
                             className="checkbox"
-                            onChange={onLimitChecked}
-                            value={limitChecked}
+                            onChange={onFormData}
+                            value={isLimitBoxOpen}
                         />
                         <span className="dark:text-neutral-200">
                             Set Character Limit
                         </span>
                     </label>
 
-                    {limitChecked && (
+                    {isLimitBoxOpen && (
                         <input
+                            name="characterLimit"
                             type="number"
                             className="py-050 w-[55px] text-center text-preset-4 border border-neutral-600 rounded-6 dark:text-neutral-200"
-                            value={numberValue}
+                            value={characterLimit}
                             onChange={
-                                limitChecked ? onNumberValue : onNumberValue("")
+                                isLimitBoxOpen ? onFormData : onFormData("")
                             }
                         />
                     )}

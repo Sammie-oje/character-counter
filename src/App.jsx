@@ -15,34 +15,27 @@ import { fab } from "@fortawesome/free-brands-svg-icons";
 library.add(fas, far, fab);
 
 function App() {
-    const [numberValue, setNumberValue] = useState("");
-    const handleNumberValue = e => {
-        setNumberValue(e.target.value);
+    /*Using an object to keep track of the values of the input elements values instead of using individual states */
+    const [formData, setFormData] = useState({
+        textInput: "",
+        excludeSpaces: false,
+        openLimitBox: false,
+        characterLimit: ""
+    });
+
+    const handleFormData = e => {
+        const { name, value, type, checked } = e.target;
+        setFormData(prev => ({
+            ...prev,
+            [name]: type === "checkbox" ? checked : value
+        }));
     };
 
-    //State to manage the value of the textarea element
-    const [textValue, setTextValue] = useState("");
-    //Update the value of textValue anytime there is a change in value
-    const handleTextValue = e => {
-        setTextValue(e.target.value);
-    };
+    const { textInput, characterLimit, openLimitBox } = formData;
 
-    const limitedText = numberValue
-        ? getLimitedText(textValue, numberValue)
-        : textValue;
-
-    const [isSpaceBoxChecked, setIsSpaceBoxChecked] = useState(false);
-    const handleSpaceBox = e => {
-        setIsSpaceBoxChecked(e.target.checked);
-    };
-
-    const [isLimitBoxChecked, setIsLimitBoxChecked] = useState(false);
-    const handleLimitBox = e => {
-        setIsLimitBoxChecked(e.target.checked);
-        if (!isLimitBoxChecked) {
-            setNumberValue(curValue => (curValue = ""));
-        }
-    };
+    const limitedText = characterLimit
+        ? getLimitedText(textInput, characterLimit)
+        : textInput;
 
     return (
         <>
@@ -56,19 +49,14 @@ function App() {
 
             <TextArea
                 value={limitedText}
-                onTextValue={handleTextValue}
-                spaceChecked={isSpaceBoxChecked}
-                onSpaceChecked={handleSpaceBox}
-                limitChecked={isLimitBoxChecked}
-                onLimitChecked={handleLimitBox}
-                numberValue={numberValue}
-                onNumberValue={handleNumberValue}
+                onFormData={handleFormData}
+                formData={formData}
             />
 
             <StatDensityContainer
                 value={limitedText}
-                spaceBoxValue={isSpaceBoxChecked}
-                numberValue={numberValue}
+                isLimitBoxOpen={openLimitBox}
+                textValue={textInput}
             />
         </>
     );
