@@ -1,8 +1,9 @@
 //Identify a word when there is a space between each cluster of letters
+import { segmentValue } from "./segmenter.js";
+
 export const countWords = value => {
-  const segmenter = new Intl.Segmenter("en", { granularity: "word" });
-const words= [...segmenter.segment(value)].map(s => s.segment);
-  
+    const words = segmentValue(value, "word");
     const wordsArr = words.filter(word => word !== "");
+
     return wordsArr.length;
 };

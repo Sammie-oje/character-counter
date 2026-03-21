@@ -2,18 +2,15 @@
 Then count how many times each character appear and compare to the total number filtered value
 Return all these values as a nice pretty looking array of objects
 */
-const filterValue = value => {
-    const segmenter = new Intl.Segmenter("en", { granularity: "grapheme" });
+import { segmentValue } from "./segmenter.js";
 
-    const characters = [...segmenter.segment(value.toUpperCase())].map(
-        s => s.segment
-    );
+const filterValue = value => {
+    const valueAllCaps = value.toUpperCase();
+    const characters = segmentValue(valueAllCaps, "grapheme");
+
     const regex =
         /[\p{L}\p{N}\p{RGI_Emoji}]/v; /*Match all emojis, any letter in any language, and any number*/
-    const filteredValue = characters
-        .filter(character => regex.test(character))
-      ;
-    console.log(filteredValue);
+    const filteredValue = characters.filter(character => regex.test(character));
     return filteredValue;
 };
 

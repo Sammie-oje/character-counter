@@ -1,8 +1,10 @@
 //Identify sentences by using terminating punctuation marks i.e (.,?,!)
+import { segmentValue } from "./segmenter.js";
+
 export const countSentence = value => {
-    const segmenter = new Intl.Segmenter("en", { granularity: "sentence" });
-    const sentences = [...segmenter.segment(value)].map(s => s.segment);
-    
+  
+    const sentences = segmentValue(value, "sentence");
     const sentencesArr = sentences.filter(sentence => /[^\s]/.test(sentence));
+
     return sentencesArr.length;
 };

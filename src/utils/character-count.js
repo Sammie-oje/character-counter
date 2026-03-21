@@ -1,7 +1,7 @@
 //Return the length of the value string
-export const countCharacters = value => {
-    const segmenter = new Intl.Segmenter("en", { granularity: "grapheme" });
+import { segmentValue } from "./segmenter.js";
 
-    const characters = [...segmenter.segment(value)].map(s => s.segment);
+export const countCharacters = value => {
+    const characters = segmentValue(value, "grapheme");
     return characters.length;
 };
