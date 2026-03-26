@@ -1,5 +1,30 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useState } from "react";
+import { motion } from "motion/react";
+
+const listVariant = {
+    expand: {
+        height: "auto",
+        transition: {
+            when: "beforeChildren",
+            staggerChildren: 0.1,
+            ease: "easeOut"
+        }
+    },
+    shrink: {
+        height: 158,
+        transition: {
+            when: "afterChildren",
+            staggerChildren: 0.05,
+            staggerDirection: -1,
+            ease: "easeIn"
+        }
+    }
+};
+const itemVariant = {
+    expand: index => ({ y: 0, opacity: 1 }),
+    shrink: index => ({ y: index > 4 ? 10 : 0, opacity: index > 4 ? 0 : 1 })
+};
 
 function LetterDensity({ charDensity }) {
     const [isExpanded, setIsExpanded] = useState(false);
@@ -7,14 +32,15 @@ function LetterDensity({ charDensity }) {
     const handleIsExpanded = () => {
         setIsExpanded(!isExpanded);
     };
+
     return (
         <div className="flex flex-col gap-250 dark:text-neutral-200">
             <h3 className="text-preset-2">Letter Density</h3>
 
-            <dl
-                className={`flex flex-col gap-150 ${
-                    isExpanded ? "h-full" : "h-[154px]"
-                } overflow-hidden`}
+            <motion.dl
+                className={`flex flex-col gap-150 overflow-hidden`}
+                variants={listVariant}
+                animate={isExpanded ? "expand" : "shrink"}
             >
                 {charDensity.length > 0 ? (
                     charDensity.map((obj, index) => (
@@ -22,7 +48,8 @@ function LetterDensity({ charDensity }) {
                             percent={obj.percentage}
                             wordCount={obj.count}
                             letter={obj.character}
-                            key={index}
+                            key={obj.character}
+                            index={index}
                         />
                     ))
                 ) : (
@@ -30,7 +57,7 @@ function LetterDensity({ charDensity }) {
                         No characters found. Start typing to see letter density.
                     </p>
                 )}
-            </dl>
+            </motion.dl>
 
             {charDensity.length > 5 && (
                 <button
@@ -54,9 +81,13 @@ function LetterDensity({ charDensity }) {
     );
 }
 
-function DensityList({ percent, wordCount, letter }) {
+function DensityList({ index, percent, wordCount, letter }) {
     return (
-        <div className="flex gap-[0.875rem]  items-center text-preset-4">
+        <motion.div
+            className="flex gap-[0.875rem] items-center text-preset-4"
+            variants={itemVariant}
+            custom={index}
+        >
             <dt>
                 <code>{letter}</code>
             </dt>
@@ -71,7 +102,7 @@ function DensityList({ percent, wordCount, letter }) {
                     {wordCount}({percent}%)
                 </output>
             </dd>
-        </div>
+        </motion.div>
     );
 }
 
