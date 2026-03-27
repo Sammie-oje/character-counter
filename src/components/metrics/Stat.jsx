@@ -4,7 +4,7 @@ import { useEffect } from "react";
 function Stat({ bgColor, id, text, onCount }) {
     const count = useMotionValue(0);
     const rounded = useTransform(() =>
-        Math.round(count.get()).toLocaleString()
+        Math.round(count.get()).toLocaleString().padStart(2, "0")
     );
 
     return (
