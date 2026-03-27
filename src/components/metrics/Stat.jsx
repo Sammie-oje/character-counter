@@ -1,3 +1,6 @@
+import { animate, motion, useMotionValue, useTransform } from "motion/react";
+import { useEffect } from "react";
+
 function Stat({ bgColor, id, text, onCount }) {
     return (
         <div

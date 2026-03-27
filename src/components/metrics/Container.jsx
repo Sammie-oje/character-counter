@@ -1,4 +1,4 @@
-import LetterDensity from "./LetterDensity.jsx";
+import LetterDensity from "./letter-list/LetterDensity.jsx";
 import Stat from "./Stat.jsx";
 
 import { countCharacters } from "../../utils/character-count.js";

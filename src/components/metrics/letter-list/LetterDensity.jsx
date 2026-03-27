@@ -1,4 +1,5 @@
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import DensityList from "./DensityList.jsx";
+import ToggleList from "./ToggleList.jsx";
 import { useState } from "react";
 import { motion } from "motion/react";
 
@@ -50,6 +51,7 @@ function LetterDensity({ charDensity }) {
                             letter={obj.character}
                             key={obj.character}
                             index={index}
+                            itemVariant={itemVariant}
                         />
                     ))
                 ) : (
@@ -60,49 +62,9 @@ function LetterDensity({ charDensity }) {
             </motion.dl>
 
             {charDensity.length > 5 && (
-                <button
-                    className="flex gap-100 items-center"
-                    onClick={handleIsExpanded}
-                >
-                    {isExpanded ? (
-                        <>
-                            <span className="text-preset-3">See Less</span>
-                            <FontAwesomeIcon icon="fa-solid fa-chevron-up" />
-                        </>
-                    ) : (
-                        <>
-                            <span className="text-preset-3">See More</span>
-                            <FontAwesomeIcon icon="fa-solid fa-chevron-down" />
-                        </>
-                    )}
-                </button>
+            <ToggleList isExpanded={isExpanded} handleIsExpanded={handleIsExpanded}/>
             )}
         </div>
-    );
-}
-
-function DensityList({ index, percent, wordCount, letter }) {
-    return (
-        <motion.div
-            className="flex gap-[0.875rem] items-center text-preset-4"
-            variants={itemVariant}
-            custom={index}
-        >
-            <dt>
-                <code>{letter}</code>
-            </dt>
-            <dd className="contents">
-                <div className="w-full h-[12px] rounded-full bg-neutral-100 dark:bg-neutral-800">
-                    <div
-                        className="h-[12px] rounded-full bg-purple-400"
-                        style={{ width: `${percent}%` }}
-                    ></div>
-                </div>
-                <output>
-                    {wordCount}({percent}%)
-                </output>
-            </dd>
-        </motion.div>
     );
 }
 
