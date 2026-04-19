@@ -8,7 +8,7 @@ const listVariant = {
         height: "auto",
         transition: {
             when: "beforeChildren",
-            staggerChildren: 0.1,
+            visualDuration: 0.2,
             ease: "easeOut"
         }
     },
@@ -16,7 +16,7 @@ const listVariant = {
         height: 158,
         transition: {
             when: "afterChildren",
-            staggerChildren: 0.05,
+            staggerChildren: 0.02,
             staggerDirection: -1,
             ease: "easeIn"
         }
@@ -62,7 +62,10 @@ function LetterDensity({ charDensity }) {
             </motion.dl>
 
             {charDensity.length > 5 && (
-            <ToggleList isExpanded={isExpanded} handleIsExpanded={handleIsExpanded}/>
+                <ToggleList
+                    isExpanded={isExpanded}
+                    handleIsExpanded={handleIsExpanded}
+                />
             )}
         </div>
     );

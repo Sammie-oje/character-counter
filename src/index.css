@@ -22,11 +22,11 @@
         @apply dark:border-neutral-200 dark:focus:shadow-[0_0_0px_2px] dark:focus:shadow-white dark:focus:border dark:focus:border-neutral-200 dark:focus:bg-white dark:focus:checked:bg-purple-400;
     }
     .textarea {
-        @apply p-150 bg-neutral-100 border-2 border-neutral-200 rounded-12 h-[200px] w-full resize-none text-neutral-700 text-preset-3 cursor-pointer;
+        @apply p-150 w-full rounded-b-12 border-t-2 border-neutral-200 resize-none text-neutral-700 text-preset-3 cursor-pointer;
 
         @apply focus:shadow-[0_0_8px_2px] focus:shadow-purple-500 focus:outline-2 focus:outline-purple-500 focus:bg-neutral-200;
 
-        @apply dark:bg-neutral-800 dark:border-neutral-700 dark:text-neutral-200 dark:focus:bg-neutral-800;
+        @apply dark:border-neutral-700 dark:text-neutral-200 dark:focus:bg-neutral-800;
     }
     .alert {
         @apply shadow-[0_0_8px_2px] shadow-orange-800 outline-2 outline-orange-800 dark:shadow-orange-500 dark:outline-orange-500;
