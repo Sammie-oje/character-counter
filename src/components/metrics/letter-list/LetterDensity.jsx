@@ -16,8 +16,7 @@ const listVariant = {
         height: 158,
         transition: {
             when: "afterChildren",
-            staggerChildren: 0.02,
-            staggerDirection: -1,
+            visualDuration: 0.2,
             ease: "easeIn"
         }
     }
