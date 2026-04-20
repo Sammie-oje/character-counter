@@ -31,7 +31,7 @@ function App() {
         }));
     };
 
-    const { textInput, characterLimit, openLimitBox , excludeSpaces} = formData;
+    const { textInput, characterLimit, openLimitBox, excludeSpaces } = formData;
 
     const limitedText = characterLimit
         ? getLimitedText(textInput, characterLimit)

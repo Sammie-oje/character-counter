@@ -4,6 +4,7 @@ import { useState } from "react";
 
 function TextInput({ value, onFormData, characterLimit }) {
     const [isExpanded, setIsExpanded] = useState(false);
+    /**/
     function handleExpansion(e) {
         e.preventDefault();
         setIsExpanded(!isExpanded);
@@ -12,7 +13,7 @@ function TextInput({ value, onFormData, characterLimit }) {
     return (
         <div className="flex flex-col gap-150 ">
             <section
-                className={`bg-neutral-100 border-2 border-neutral-200 rounded-12 overflow-scroll dark:bg-neutral-800 dark:border-neutral-700 ${isExpanded ? "h-full w-full absolute top-0 left-0 z-200" : ""}`}
+                className={`flex flex-col bg-neutral-100 border-2 border-neutral-200 rounded-12 dark:bg-neutral-800 dark:border-neutral-700 ${isExpanded ? "h-full w-full absolute top-0 left-0 z-200" : ""}`}
             >
                 <div
                     role="toolbar"
@@ -27,7 +28,7 @@ function TextInput({ value, onFormData, characterLimit }) {
                 </div>
                 <textarea
                     name="textInput"
-                    className={`textarea ${characterLimit && value.length >= Number(characterLimit) ? "alert" : ""} ${isExpanded ? "h-full" : "h-[200px]"}`}
+                    className={`textarea ${characterLimit && value.length >= Number(characterLimit) ? "alert" : ""} ${isExpanded ? "h-full grow " : "min-h-[200px]"}`}
                     placeholder="Start typing here... (or paste your text)"
                     value={value}
                     onChange={onFormData}
