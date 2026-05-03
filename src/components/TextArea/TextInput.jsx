@@ -1,14 +1,29 @@
 import CopyText from "../CopyText.jsx";
 import MaximizeInput from "../MaximizeInput.jsx";
-import { useState } from "react";
+import { Check } from "lucide-react";
+import { useState, useEffect } from "react";
 
 function TextInput({ value, onFormData, characterLimit }) {
     const [isExpanded, setIsExpanded] = useState(false);
-    /**/
+    const [hasCopied, setHasCopied] = useState(false);
+
     function handleExpansion(e) {
         e.preventDefault();
         setIsExpanded(!isExpanded);
     }
+    function showCheckMark() {
+        setHasCopied(true);
+    }
+//For better UX, display and remove a check icon after 1.2s to make the user aware that the text has been copied
+    useEffect(() => {
+        if (hasCopied) {
+            const timer = setTimeout(() => {
+                setHasCopied(false);
+            }, 1200);
+
+            return () => clearTimeout(timer);
+        }
+    }, [hasCopied]);
 
     return (
         <div className="flex flex-col gap-150 ">
@@ -24,7 +39,11 @@ function TextInput({ value, onFormData, characterLimit }) {
                         onExpansion={handleExpansion}
                         isExpanded={isExpanded}
                     />
-                    <CopyText value={value} />
+                    {hasCopied ? (
+                        <Check color="#25e290" className="size-5" />
+                    ) : (
+                        <CopyText value={value} onCopy={showCheckMark} />
+                    )}
                 </div>
                 <textarea
                     name="textInput"

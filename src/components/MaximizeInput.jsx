@@ -5,6 +5,7 @@ function MaximizeInput({ onExpansion, isExpanded }) {
         <button
             className="text-neutral-700 dark:text-neutral-200"
             onClick={onExpansion}
+            title="Toggle maximizing text input"
         >
             {isExpanded ? (
                 <Minimize className="size-5" />
