@@ -11,29 +11,9 @@
         />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <title>Frontend Mentor | Character counter</title>
-
-        <!--script for OS theme switch-->
-        <script>
-            //Detects OS theme
-            const isOsTheme = window.matchMedia(
-                "(prefers-color-scheme: dark)"
-            ).matches;
-
-            //Target <html/> and update class
-            function changeAppTheme() {
-                if (isOsTheme) {
-                    document.documentElement.classList.add("dark");
-                } else {
-                    document.documentElement.classList.remove("dark");
-                }
-                return;
-            }
-
-            changeAppTheme();
-        </script>
     </head>
     <body
-        class="bg-[url(/assets/images/bg-light-theme.png)] dark:bg-[url(/assets/images/bg-dark-theme.png)] bg-cover relative"
+        class="bg-[url(/assets/images/bg-light-theme.png)] dark:bg-[url(/assets/images/bg-dark-theme.png)] bg-cover"
     >
         <main
             id="root"

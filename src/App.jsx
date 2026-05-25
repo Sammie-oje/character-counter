@@ -2,17 +2,7 @@ import { useState } from "react";
 import Header from "./components/Header.jsx";
 import TextArea from "./components/TextArea/TextArea.jsx";
 import StatDensityContainer from "./components/metrics/Container.jsx";
-
 import { getLimitedText } from "./utils/character-limit.js";
-
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { library } from "@fortawesome/fontawesome-svg-core";
-
-import { fas } from "@fortawesome/free-solid-svg-icons";
-import { far } from "@fortawesome/free-regular-svg-icons";
-import { fab } from "@fortawesome/free-brands-svg-icons";
-
-library.add(fas, far, fab);
 
 function App() {
     /*Using an object to keep track of the values of the input elements values instead of using individual states */

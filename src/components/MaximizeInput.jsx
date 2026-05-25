@@ -1,16 +1,18 @@
-import { Maximize, Minimize } from "lucide-react";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faExpand } from "@fortawesome/free-solid-svg-icons";
+import { faCompress } from "@fortawesome/free-solid-svg-icons";
 
 function MaximizeInput({ onExpansion, isExpanded }) {
     return (
         <button
-            className="text-neutral-700 dark:text-neutral-200"
+            className="text-neutral-700 p-4 dark:text-neutral-200"
             onClick={onExpansion}
             title="Toggle maximizing text input"
         >
             {isExpanded ? (
-                <Minimize className="size-5" />
+                <FontAwesomeIcon icon={faCompress} />
             ) : (
-                <Maximize className="size-5" />
+                <FontAwesomeIcon icon={faExpand} />
             )}
         </button>
     );
