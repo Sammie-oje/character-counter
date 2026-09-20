@@ -2,11 +2,11 @@
 
 /*Custom font style, family served from a local file*/
 @font-face {
-    font-family: dmSans;
-    font-display: swap;
-    font-style: normal;
-    font-weight: 400 600 700;
-    src: url("/assets/fonts/DM_Sans/DMSans-VariableFont_opsz,wght.ttf");
+  font-family: dmSans;
+  font-display: swap;
+  font-style: normal;
+  font-weight: 400 600 700;
+  src: url("./assets/fonts/DM_Sans/DMSans-VariableFont_opsz,wght.ttf");
 }
 
 /*Stops the dark:* class from being based on the OS theme allowing for manual toggle*/
@@ -14,83 +14,83 @@
 
 /*Heavily styled elements are put as components for reusability*/
 @layer components {
-    .checkbox {
-        @apply cursor-pointer appearance-none size-4 border border-neutral-900 rounded-4 checked:bg-purple-400 checked:bg-[url('assets/images/icon-check.svg')] bg-no-repeat bg-center checked:border-none;
+  .checkbox {
+    @apply cursor-pointer appearance-none size-4 border border-neutral-900 rounded-4 checked:bg-purple-400 checked:bg-[url('assets/images/icon-check.svg')] bg-no-repeat bg-center checked:border-none;
 
-        @apply focus:outline-2 checked:focus:border-none focus:outline-purple-400 focus:outline-offset-2 focus:border-1 focus:border-neutral-200;
+    @apply focus:outline-2 checked:focus:border-none focus:outline-purple-400 focus:outline-offset-2 focus:border-1 focus:border-neutral-200;
 
-        @apply dark:border-neutral-200 dark:focus:shadow-[0_0_0px_2px] dark:focus:shadow-white dark:focus:border dark:focus:border-neutral-200 dark:focus:bg-white dark:focus:checked:bg-purple-400;
-    }
-    .textarea {
-        @apply p-150 w-full rounded-b-12 border-t-2 border-neutral-200 resize-none text-neutral-700 text-preset-3 cursor-pointer;
+    @apply dark:border-neutral-200 dark:focus:shadow-[0_0_0px_2px] dark:focus:shadow-white dark:focus:border dark:focus:border-neutral-200 dark:focus:bg-white dark:focus:checked:bg-purple-400;
+  }
+  .textarea {
+    @apply p-150 w-full rounded-b-12 border-t-2 border-neutral-200 resize-none text-neutral-700 text-preset-3 cursor-pointer;
 
-        @apply focus:shadow-[0_0_8px_2px] focus:shadow-purple-500 focus:outline-2 focus:outline-purple-500 focus:bg-neutral-200;
+    @apply focus:shadow-[0_0_8px_2px] focus:shadow-purple-500 focus:outline-2 focus:outline-purple-500 focus:bg-neutral-200;
 
-        @apply dark:border-neutral-700 dark:text-neutral-200 dark:focus:bg-neutral-800;
-    }
-    .alert {
-        @apply shadow-[0_0_8px_2px] shadow-orange-800 outline-2 outline-orange-800 dark:shadow-orange-500 dark:outline-orange-500;
-    }
+    @apply dark:border-neutral-700 dark:text-neutral-200 dark:focus:bg-neutral-800;
+  }
+  .alert {
+    @apply shadow-[0_0_8px_2px] shadow-orange-800 outline-2 outline-orange-800 dark:shadow-orange-500 dark:outline-orange-500;
+  }
 }
 
 /*Custom theme for app */
 @theme {
-    /*Colors*/
-    --color-neutral-900: hsl(233, 18%, 9%);
-    --color-neutral-800: hsl(235, 14%, 15%);
-    --color-neutral-700: hsl(235, 13%, 19%);
-    --color-neutral-600: hsl(234, 14%, 29%);
-    --color-neutral-200: hsl(240, 26%, 92%);
-    --color-neutral-100: hsl(240, 24%, 96%);
-    --color-neutral-0: hsl(0, 0%, 100%);
-    --color-purple-400: hsl(274, 90%, 80%);
-    --color-purple-500: hsl(274, 90%, 73%);
-    --color-yellow-500: hsl(37, 100%, 50%);
-    --color-orange-500: hsl(15, 99%, 67%);
-    --color-orange-800: hsl(15, 99%, 43%);
-    /*Border radius*/
-    --radius-4: 0.25rem;
-    --radius-6: 0.375rem;
-    --radius-8: 0.5rem;
-    --radius-10: 0.625rem;
-    --radius-12: 0.75rem;
-    --radius-16: 1rem;
-    --radius-20: 1.25rem;
-    --radius-25: 1.5rem;
-    /*Spacing*/
-    --spacing-025: 0.125rem;
-    --spacing-050: 0.25rem;
-    --spacing-075: 0.375rem;
-    --spacing-100: 0.5rem;
-    --spacing-150: 0.75rem;
-    --spacing-200: 1rem;
-    --spacing-250: 1.25rem;
-    --spacing-300: 1.5rem;
-    --spacing-400: 2rem;
-    --spacing-500: 2.5rem;
-    --spacing-600: 3rem;
-    --spacing-800: 4rem;
-    --spacing-1000: 5rem;
-    /*Text presets*/
-    --text-preset-1: 4rem;
-    --text-preset-1--line-height: 100%;
-    --text-preset-1--letter-spacing: -1px;
+  /*Colors*/
+  --color-neutral-900: hsl(233, 18%, 9%);
+  --color-neutral-800: hsl(235, 14%, 15%);
+  --color-neutral-700: hsl(235, 13%, 19%);
+  --color-neutral-600: hsl(234, 14%, 29%);
+  --color-neutral-200: hsl(240, 26%, 92%);
+  --color-neutral-100: hsl(240, 24%, 96%);
+  --color-neutral-0: hsl(0, 0%, 100%);
+  --color-purple-400: hsl(274, 90%, 80%);
+  --color-purple-500: hsl(274, 90%, 73%);
+  --color-yellow-500: hsl(37, 100%, 50%);
+  --color-orange-500: hsl(15, 99%, 67%);
+  --color-orange-800: hsl(15, 99%, 43%);
+  /*Border radius*/
+  --radius-4: 0.25rem;
+  --radius-6: 0.375rem;
+  --radius-8: 0.5rem;
+  --radius-10: 0.625rem;
+  --radius-12: 0.75rem;
+  --radius-16: 1rem;
+  --radius-20: 1.25rem;
+  --radius-25: 1.5rem;
+  /*Spacing*/
+  --spacing-025: 0.125rem;
+  --spacing-050: 0.25rem;
+  --spacing-075: 0.375rem;
+  --spacing-100: 0.5rem;
+  --spacing-150: 0.75rem;
+  --spacing-200: 1rem;
+  --spacing-250: 1.25rem;
+  --spacing-300: 1.5rem;
+  --spacing-400: 2rem;
+  --spacing-500: 2.5rem;
+  --spacing-600: 3rem;
+  --spacing-800: 4rem;
+  --spacing-1000: 5rem;
+  /*Text presets*/
+  --text-preset-1: 4rem;
+  --text-preset-1--line-height: 100%;
+  --text-preset-1--letter-spacing: -1px;
 
-    --text-preset-2: 1.5rem;
-    --text-preset-2--line-height: 130%;
-    --text-preset-2--letter-spacing: -1px;
+  --text-preset-2: 1.5rem;
+  --text-preset-2--line-height: 130%;
+  --text-preset-2--letter-spacing: -1px;
 
-    --text-preset-mobile: 2.5rem;
-    --text-preset-mobile--line-height: 100%;
-    --text-preset-mobile--letter-spacing: -1px;
+  --text-preset-mobile: 2.5rem;
+  --text-preset-mobile--line-height: 100%;
+  --text-preset-mobile--letter-spacing: -1px;
 
-    --text-preset-3: 1.25rem;
-    --text-preset-3--line-height: 140%;
-    --text-preset-3--letter-spacing: -0.6px;
+  --text-preset-3: 1.25rem;
+  --text-preset-3--line-height: 140%;
+  --text-preset-3--letter-spacing: -0.6px;
 
-    --text-preset-4: 1rem;
-    --text-preset-4--line-height: 130%;
-    --text-preset-4--letter-spacing: -0.6px;
+  --text-preset-4: 1rem;
+  --text-preset-4--line-height: 130%;
+  --text-preset-4--letter-spacing: -0.6px;
 
-    --breakpoint-xxl: 90rem;
+  --breakpoint-xxl: 90rem;
 }

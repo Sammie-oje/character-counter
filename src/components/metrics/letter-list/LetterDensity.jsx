@@ -10,7 +10,6 @@ const listVariant = {
             when: "beforeChildren",
             visualDuration: 0.2,
             ease: "easeOut"
-
         }
     },
     shrink: {
@@ -42,10 +41,9 @@ function LetterDensity({ charDensity }) {
                 className={`flex flex-col gap-150 overflow-hidden`}
                 variants={listVariant}
                 animate={isExpanded ? "expand" : "shrink"}
-                animate={isExpanded ? "expand" : "shrink"}
             >
                 {charDensity.length > 0 ? (
-                    charDensity.map((obj, index) => 
+                    charDensity.map((obj, index) => (
                         <DensityList
                             percent={obj.percentage}
                             wordCount={obj.count}
@@ -53,7 +51,8 @@ function LetterDensity({ charDensity }) {
                             key={obj.character}
                             index={index}
                             itemVariant={itemVariant}
-                        />)
+                        />
+                    ))
                 ) : (
                     <p className="text-preset-4 dark:text-neutral-200">
                         No characters found. Start typing to see letter density.
