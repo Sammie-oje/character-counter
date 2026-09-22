@@ -18,4 +18,4 @@ function MaximizeInput({ onExpansion, isExpanded }) {
   );
 }
 
-export default MaximizeInput
+export default MaximizeInput;
