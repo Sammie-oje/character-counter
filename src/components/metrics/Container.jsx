@@ -9,43 +9,43 @@ import { getAnalytics } from "../../utils/letter-density.js";
 import { excludeSpaces } from "../../utils/exclude-spaces.js";
 import { getLimitedText } from "../../utils/character-limit.js";
 
-function StatDensityContainer({ value, isSpaceExcluded, textValue }) {
-    return (
-        <section className="px-200 flex flex-col gap-300 md:px-400 ">
-            <dl
-                className="flex flex-col gap-200 h-[422px] w-full md:flex-row md:h-[150px]"
-                aria-live="polite"
-            >
-                <Stat
-                    bgColor={"bg-purple-400"}
-                    id={"character-count"}
-                    text={
-                        isSpaceExcluded
-                            ? "Total Characters (no space)"
-                            : "Total Characters"
-                    }
-                    onCount={
-                        isSpaceExcluded
-                            ? excludeSpaces(value)
-                            : countCharacters(value)
-                    }
-                />
-                <Stat
-                    bgColor={"bg-yellow-500"}
-                    id={"word-count"}
-                    text={"Word Count"}
-                    onCount={countWords(value)}
-                />
-                <Stat
-                    bgColor={"bg-orange-500"}
-                    id={"sentence-count"}
-                    text={"Sentence Count"}
-                    onCount={countSentence(value)}
-                />
-            </dl>
-            <LetterDensity charDensity={getAnalytics(value)} />
-        </section>
-    );
+import { useForm } from "../../contexts/FormContext.jsx";
+
+function StatDensityContainer() {
+  const { value, isSpaceExcluded, textValue } = useForm();
+
+  return (
+    <section className="px-200 flex flex-col gap-300 md:px-400 ">
+      <dl
+        className="flex flex-col gap-200 h-[422px] w-full md:flex-row md:h-[150px]"
+        aria-live="polite"
+      >
+        <Stat
+          bgColor={"bg-purple-400"}
+          id={"character-count"}
+          text={
+            isSpaceExcluded ? "Total Characters (no space)" : "Total Characters"
+          }
+          onCount={
+            isSpaceExcluded ? excludeSpaces(value) : countCharacters(value)
+          }
+        />
+        <Stat
+          bgColor={"bg-yellow-500"}
+          id={"word-count"}
+          text={"Word Count"}
+          onCount={countWords(value)}
+        />
+        <Stat
+          bgColor={"bg-orange-500"}
+          id={"sentence-count"}
+          text={"Sentence Count"}
+          onCount={countSentence(value)}
+        />
+      </dl>
+      <LetterDensity charDensity={getAnalytics(value)} />
+    </section>
+  );
 }
 
 export default StatDensityContainer;

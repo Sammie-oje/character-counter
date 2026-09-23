@@ -1,9 +1,3 @@
-import CopyText from "../CopyText.jsx";
-import MaximizeInput from "../MaximizeInput.jsx";
-import Check from "../../assets/images/icon-check.svg?react";
-import Info from "../../assets/images/icon-info.svg?react";
-import { IconSwap } from "../IconSwap.jsx";
-
 import { useState, useEffect, useRef } from "react";
 import {
   motion,
@@ -13,6 +7,13 @@ import {
   useReducedMotion,
 } from "motion/react";
 
+import CopyText from "../CopyText.jsx";
+import MaximizeInput from "../MaximizeInput.jsx";
+import Check from "../../assets/images/icon-check.svg?react";
+import Info from "../../assets/images/icon-info.svg?react";
+import { IconSwap } from "../IconSwap.jsx";
+import { useForm } from "../../contexts/FormContext.jsx";
+
 const SHAKE_KEYFRAMES = [0, 6, -6, 4, 0];
 const SHAKE_OPTIONS = {
   duration: 0.28,
@@ -20,7 +21,9 @@ const SHAKE_OPTIONS = {
   ease: [0.22, 1, 0.36, 1],
 };
 
-function TextInput({ value, onFormData, characterLimit }) {
+function TextInput() {
+  const { value, onFormData, characterLimit } = useForm();
+
   const [isExpanded, setIsExpanded] = useState(false);
   const [hasCopied, setHasCopied] = useState(false);
   const [dimensions, setDimensions] = useState({});
@@ -73,7 +76,6 @@ function TextInput({ value, onFormData, characterLimit }) {
         ease: [0.22, 1, 0.36, 1],
       },
     },
-
     shrink: {
       height: Math.round(dimensions.height),
       width: Math.round(dimensions.width),

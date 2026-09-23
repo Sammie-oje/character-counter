@@ -21,6 +21,7 @@
 
     @apply dark:border-neutral-200 dark:focus:shadow-[0_0_0px_2px] dark:focus:shadow-white dark:focus:border dark:focus:border-neutral-200 dark:focus:bg-white dark:focus:checked:bg-purple-400;
   }
+
   .textarea {
     @apply p-150 w-full rounded-b-12 border-t-2 border-neutral-200 resize-none text-neutral-700 text-preset-3 cursor-pointer;
 
