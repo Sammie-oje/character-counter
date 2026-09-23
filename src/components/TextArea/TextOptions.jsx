@@ -1,6 +1,7 @@
 import { calculateReadingTime } from "../../utils/reading-time.js";
 import { countWords } from "../../utils/word-count.js";
 import { useForm } from "../../contexts/FormContext.jsx";
+import { Checkbox } from "../Checkbox.jsx";
 
 function TextOptions() {
   const { value, onFormData, isSpaceExcluded, isLimitBoxOpen, characterLimit } =
@@ -9,7 +10,7 @@ function TextOptions() {
   return (
     <div className="flex flex-col gap-150 items-start md:flex-row md:justify-between">
       <div className="contents md:flex md:gap-300">
-        <label
+        {/* <label
           htmlFor="exclude-spaces-checkbox"
           className="flex items-center gap-[10px]"
         >
@@ -22,20 +23,23 @@ function TextOptions() {
             onChange={onFormData}
           />
           <span className="dark:text-neutral-200">Exclude Spaces</span>
-        </label>
+        </label>*/}
+        <Checkbox
+          name="excludeSpaces"
+          id="exclude-spaces-checkbox"
+          value={isSpaceExcluded}
+          onChangeData={onFormData}
+          label="Exclude Spaces"
+        />
 
         <div className="flex gap-[10px] items-center">
-          <label htmlFor="character-limit-checkbox" className="contents">
-            <input
-              name="openLimitBox"
-              id="character-limit-checkbox"
-              type="checkbox"
-              className="checkbox"
-              onChange={onFormData}
-              value={isLimitBoxOpen}
-            />
-            <span className="dark:text-neutral-200">Set Character Limit</span>
-          </label>
+          <Checkbox
+            name="openLimitBox"
+            id="character-limit-checkbox"
+            value={isLimitBoxOpen}
+            onChangeData={onFormData}
+            label="Set Character Limit"
+          />
 
           {isLimitBoxOpen && (
             <input
