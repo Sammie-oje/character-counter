@@ -2,6 +2,8 @@ import { useState, useEffect } from "react";
 import { IconSwap } from "./IconSwap.jsx";
 import Sun from "../assets/images/icon-sun.svg?react";
 import Moon from "../assets/images/icon-moon.svg?react";
+import logoLightUrl from "../assets/images/logo-light-theme.svg";
+import logoDarkUrl from "../assets/images/logo-dark-theme.svg";
 
 function Header() {
   const htmlEl = document.documentElement;
@@ -29,13 +31,13 @@ function Header() {
   return (
     <header className="flex justify-between items-center p-200 w-full md:px-400 md:py-200">
       <img
-        src="../src/assets/images/logo-light-theme.svg"
+        src={logoLightUrl}
         alt="logo-light-theme"
         className="w-60 block dark:hidden"
       />
 
       <img
-        src="../src/assets/images/logo-dark-theme.svg"
+        src={logoDarkUrl}
         alt="logo-dark-theme"
         className="w-60 hidden dark:block"
       />

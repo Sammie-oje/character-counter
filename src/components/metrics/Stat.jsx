@@ -10,7 +10,7 @@ function Stat({ bgColor, id, text, onCount }) {
         <dd className="text-preset-3 z-100">{text}</dd>
       </div>
       <figure className="absolute -top-2 -right-15 ">
-        <img src={`../src/assets/images/pattern-${id}.svg`} alt={`${id}-bg`} />
+        <img src={`../../src/assets/images/pattern-${id}.svg`} alt={`${id}-bg`} />
       </figure>
     </div>
   );
