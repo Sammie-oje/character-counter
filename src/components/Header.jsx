@@ -29,13 +29,13 @@ function Header() {
   return (
     <header className="flex justify-between items-center p-200 w-full md:px-400 md:py-200">
       <img
-        src="src/assets/images/logo-light-theme.svg"
+        src="../src/assets/images/logo-light-theme.svg"
         alt="logo-light-theme"
         className="w-60 block dark:hidden"
       />
 
       <img
-        src="src/assets/images/logo-dark-theme.svg"
+        src="../src/assets/images/logo-dark-theme.svg"
         alt="logo-dark-theme"
         className="w-60 hidden dark:block"
       />
