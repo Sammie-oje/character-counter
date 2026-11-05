@@ -51,11 +51,6 @@ function TextInput() {
 
   //For better UX, display and remove a check icon after 1.2s to make the user aware that the text has been copied
   useEffect(() => {
-    if (inputSectionRef.current) {
-      const rect = inputSectionRef.current.getBoundingClientRect();
-      setDimensions(rect);
-    }
-
     if (hasCopied) {
       const timer = setTimeout(() => {
         setHasCopied(false);
@@ -64,6 +59,13 @@ function TextInput() {
       return () => clearTimeout(timer);
     }
   }, [hasCopied]);
+
+  useEffect(() => {
+    if (inputSectionRef.current) {
+      const rect = inputSectionRef.current.getBoundingClientRect();
+      setDimensions(rect);
+    }
+  }, [isExpanded]);
 
   const variants = {
     expand: {
