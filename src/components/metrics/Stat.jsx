@@ -1,3 +1,7 @@
+function getImageUrl(id) {
+  return new URL(`../../assets/images/pattern-${id}.svg`, import.meta.url).href;
+}
+
 function Stat({ bgColor, id, text, onCount }) {
   const statNumber = String(onCount).padStart(2, "0");
   return (
@@ -10,7 +14,7 @@ function Stat({ bgColor, id, text, onCount }) {
         <dd className="text-preset-3 z-100">{text}</dd>
       </div>
       <figure className="absolute -top-2 -right-15 ">
-        <img src={`../../src/assets/images/pattern-${id}.svg`} alt={`${id}-bg`} />
+        <img src={getImageUrl(id)} alt={`${id}-bg`} />
       </figure>
     </div>
   );
