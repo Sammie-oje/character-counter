@@ -1,4 +1,5 @@
 import { useState, useEffect, useRef } from "react";
+
 import {
   motion,
   AnimatePresence,
@@ -27,6 +28,7 @@ function TextInput() {
   const [isExpanded, setIsExpanded] = useState(false);
   const [hasCopied, setHasCopied] = useState(false);
   const [dimensions, setDimensions] = useState({});
+  const isExpandedRef = useRef(false);
   const inputSectionRef = useRef(null);
 
   const shakeX = useMotionValue(0);
@@ -61,11 +63,23 @@ function TextInput() {
   }, [hasCopied]);
 
   useEffect(() => {
-    if (inputSectionRef.current) {
-      const rect = inputSectionRef.current.getBoundingClientRect();
-      setDimensions(rect);
-    }
+    isExpandedRef.current = isExpanded;
   }, [isExpanded]);
+
+  useEffect(() => {
+    const ro = new ResizeObserver(([entry]) => {
+      if (isExpandedRef.current) return;
+      const { inlineSize: width, blockSize: height } = entry.borderBoxSize[0];
+      setDimensions((prev) =>
+        prev && prev.width === width && prev.height === height
+          ? prev
+          : { width, height },
+      );
+    });
+
+    ro.observe(inputSectionRef.current);
+    return () => ro.disconnect();
+  }, []);
 
   const variants = {
     expand: {
