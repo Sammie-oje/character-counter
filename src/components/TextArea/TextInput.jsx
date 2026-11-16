@@ -1,5 +1,4 @@
-import { useState, useEffect, useRef } from "react";
-
+import { useState, useEffect, useLayoutEffect, useRef } from "react";
 import {
   motion,
   AnimatePresence,
@@ -27,23 +26,37 @@ function TextInput() {
 
   const [isExpanded, setIsExpanded] = useState(false);
   const [hasCopied, setHasCopied] = useState(false);
-  const [dimensions, setDimensions] = useState({});
-  const isExpandedRef = useRef(false);
-  const inputSectionRef = useRef(null);
-
+  const resolveRef = useRef(null);
   const shakeX = useMotionValue(0);
   const reduceMotion = useReducedMotion();
-
   const isOverLimit = characterLimit && value.length >= Number(characterLimit);
-
-  function handleExpansion(e) {
-    e.preventDefault();
-    setIsExpanded(!isExpanded);
-  }
 
   function showCheckMark() {
     setHasCopied(true);
   }
+
+  function handleExpansion(e) {
+    e.preventDefault();
+    const toggle = () => setIsExpanded((prev) => !prev);
+
+    if (isExpanded || !document.startViewTransition || reduceMotion) {
+      toggle();
+      return;
+    }
+
+    document.startViewTransition(
+      () =>
+        new Promise((resolve) => {
+          resolveRef.current = resolve;
+          toggle();
+        }),
+    );
+  }
+
+  useLayoutEffect(() => {
+    resolveRef.current?.();
+    resolveRef.current = null;
+  }, [isExpanded]);
 
   useEffect(() => {
     if (!isOverLimit || reduceMotion) return;
@@ -62,50 +75,11 @@ function TextInput() {
     }
   }, [hasCopied]);
 
-  useEffect(() => {
-    isExpandedRef.current = isExpanded;
-  }, [isExpanded]);
-
-  useEffect(() => {
-    const ro = new ResizeObserver(([entry]) => {
-      if (isExpandedRef.current) return;
-      const { inlineSize: width, blockSize: height } = entry.borderBoxSize[0];
-      setDimensions((prev) =>
-        prev && prev.width === width && prev.height === height
-          ? prev
-          : { width, height },
-      );
-    });
-
-    ro.observe(inputSectionRef.current);
-    return () => ro.disconnect();
-  }, []);
-
-  const variants = {
-    expand: {
-      height: "100%",
-      width: "100%",
-      transformOrigin: "center",
-      inset: 0,
-      transition: {
-        duration: 0.25,
-        ease: [0.22, 1, 0.36, 1],
-      },
-    },
-    shrink: {
-      height: Math.round(dimensions.height),
-      width: Math.round(dimensions.width),
-    },
-  };
-
   return (
     <div className="flex flex-col gap-150">
       <motion.section
-        className={`flex flex-col bg-neutral-100 border-2 border-neutral-200 rounded-12 z-200  dark:bg-neutral-800 dark:border-neutral-700 ${isExpanded ? "fixed" : ""}`}
-        ref={inputSectionRef}
-        variants={variants}
-        animate={isExpanded ? "expand" : "shrink"}
-        style={{ x: shakeX }}
+        className={`flex flex-col bg-neutral-100 border-2 border-neutral-200 rounded-12 z-200 dark:bg-neutral-800 dark:border-neutral-700 ${isExpanded ? "absolute inset-0 z-200" : "w-full h-full"}`}
+        style={{ x: shakeX, viewTransitionName: "text-input" }}
       >
         <div
           role="toolbar"

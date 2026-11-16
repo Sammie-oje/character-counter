@@ -18,6 +18,18 @@
 /*Stops the dark:* class from being based on the OS theme allowing for manual toggle*/
 @custom-variant dark (&:where(.dark, .dark *));
 
+::view-transition-group(text-input) {
+  animation-duration: 0.25s;
+  animation-timing-function: cubic-bezier(0.22, 1, 0.36, 1);
+}
+::view-transition-old(text-input),
+::view-transition-new(text-input) {
+  animation: none;
+}
+::view-transition-old(text-input) {
+  display: none;
+}
+
 /*Heavily styled elements are put as components for reusability*/
 @layer components {
   .checkbox {

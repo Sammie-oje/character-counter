@@ -10,20 +10,6 @@ function TextOptions() {
   return (
     <div className="flex flex-col gap-150 items-start md:flex-row md:justify-between">
       <div className="contents md:flex md:gap-300">
-        {/* <label
-          htmlFor="exclude-spaces-checkbox"
-          className="flex items-center gap-[10px]"
-        >
-          <input
-            name="excludeSpaces"
-            id="exclude-spaces-checkbox"
-            type="checkbox"
-            className="checkbox"
-            value={isSpaceExcluded}
-            onChange={onFormData}
-          />
-          <span className="dark:text-neutral-200">Exclude Spaces</span>
-        </label>*/}
         <Checkbox
           name="excludeSpaces"
           id="exclude-spaces-checkbox"
@@ -45,7 +31,7 @@ function TextOptions() {
             <input
               name="characterLimit"
               type="number"
-              className="py-050 w-[55px] text-center text-preset-4 border border-neutral-600 rounded-6 dark:text-neutral-200"
+              className="py-050 w-[55px] text-center text-preset-4 border border-neutral-600 rounded-6 dark:text-neutral-200 [appearance: textfield] [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:appearance-none"
               value={characterLimit}
               onChange={isLimitBoxOpen ? onFormData : onFormData("")}
             />
