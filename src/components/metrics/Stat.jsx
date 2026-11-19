@@ -4,6 +4,7 @@ function getImageUrl(id) {
 
 function Stat({ bgColor, id, text, onCount }) {
   const statNumber = String(onCount).padStart(2, "0");
+
   return (
     <div
       className={`p-250 ${bgColor} rounded-12 overflow-hidden relative h-[130px] w-full md:h-full md:px-150 md:py-200 xxl:p-200`}

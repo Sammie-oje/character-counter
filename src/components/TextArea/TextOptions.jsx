@@ -1,10 +1,8 @@
-import { calculateReadingTime } from "../../utils/reading-time.js";
-import { countWords } from "../../utils/word-count.js";
 import { useForm } from "../../contexts/FormContext.jsx";
 import { Checkbox } from "../Checkbox.jsx";
 
 function TextOptions() {
-  const { value, onFormData, isSpaceExcluded, isLimitBoxOpen, characterLimit } =
+  const { stats, onFormData, isSpaceExcluded, isLimitBoxOpen, characterLimit } =
     useForm();
 
   return (
@@ -41,8 +39,8 @@ function TextOptions() {
       <p className="text-preset-4 dark:text-neutral-200">
         Approx. reading time:{" "}
         <span>
-          {value ? calculateReadingTime(countWords(value)) : 0}
-          {calculateReadingTime(countWords(value)) > 1 ? " minutes" : " minute"}
+          {stats.readingTime}
+          {stats.readingTime > 1 ? " minutes" : " minute"}
         </span>
       </p>
     </div>

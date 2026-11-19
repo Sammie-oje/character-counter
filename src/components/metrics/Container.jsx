@@ -1,18 +1,10 @@
 import LetterDensity from "./letter-list/LetterDensity.jsx";
 import Stat from "./Stat.jsx";
 
-import { countCharacters } from "../../utils/character-count.js";
-import { countWords } from "../../utils/word-count.js";
-import { countSentence } from "../../utils/sentence-count.js";
-
-import { getAnalytics } from "../../utils/letter-density.js";
-import { excludeSpaces } from "../../utils/exclude-spaces.js";
-import { getLimitedText } from "../../utils/character-limit.js";
-
 import { useForm } from "../../contexts/FormContext.jsx";
 
 function StatDensityContainer() {
-  const { value, isSpaceExcluded, textValue } = useForm();
+  const { stats, isSpaceExcluded } = useForm();
 
   return (
     <section className="px-200 flex flex-col gap-300 md:px-400 ">
@@ -26,24 +18,22 @@ function StatDensityContainer() {
           text={
             isSpaceExcluded ? "Total Characters (no space)" : "Total Characters"
           }
-          onCount={
-            isSpaceExcluded ? excludeSpaces(value) : countCharacters(value)
-          }
+          onCount={stats.characters}
         />
         <Stat
           bgColor={"bg-yellow-500"}
           id={"word-count"}
           text={"Word Count"}
-          onCount={countWords(value)}
+          onCount={stats.words}
         />
         <Stat
           bgColor={"bg-orange-500"}
           id={"sentence-count"}
           text={"Sentence Count"}
-          onCount={countSentence(value)}
+          onCount={stats.sentences}
         />
       </dl>
-      <LetterDensity charDensity={getAnalytics(value)} />
+      <LetterDensity charDensity={stats.density} />
     </section>
   );
 }
