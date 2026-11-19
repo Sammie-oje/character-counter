@@ -6,8 +6,14 @@ function StatDensityContainer() {
   const { stats, isSpaceExcluded } = useForm();
 
   return (
-    <section className="px-200 flex flex-col gap-300 md:px-400 ">
-      <dl
+    <section
+      aria-labelledby="stats-heading"
+      className="px-200 flex flex-col gap-300 md:px-400 "
+    >
+      <h2 className="sr-only" id="stats-heading">
+        Text statistics
+      </h2>
+      <div
         className="flex flex-col gap-200 h-[422px] w-full md:flex-row md:h-[150px]"
         aria-live="polite"
       >
@@ -31,7 +37,7 @@ function StatDensityContainer() {
           text={"Sentence Count"}
           onCount={stats.sentences}
         />
-      </dl>
+      </div>
       <LetterDensity charDensity={stats.density} />
     </section>
   );

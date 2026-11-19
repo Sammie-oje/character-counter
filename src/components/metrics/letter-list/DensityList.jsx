@@ -2,7 +2,7 @@ import { m } from "motion/react";
 
 function DensityList({ index, percent, wordCount, letter, itemVariant }) {
     return (
-        <m.div
+        <m.dl
             className="flex gap-[0.875rem] items-center text-preset-4"
             variants={itemVariant}
             custom={index}
@@ -21,7 +21,7 @@ function DensityList({ index, percent, wordCount, letter, itemVariant }) {
                     {wordCount}({percent}%)
                 </output>
             </dd>
-        </m.div>
+        </m.dl>
     );
 }
 
