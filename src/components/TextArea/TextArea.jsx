@@ -3,7 +3,10 @@ import TextOptions from "./TextOptions.jsx";
 
 function TextArea() {
   return (
-    <section aria-label="Text editor" className=" px-200 flex flex-col gap-200 md:px-400">
+    <section
+      aria-label="Text editor"
+      className=" px-200 flex flex-col gap-200 md:px-400"
+    >
       <form className="contents">
         <TextInput />
         <TextOptions />
