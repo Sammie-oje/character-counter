@@ -1,14 +1,5 @@
 @import "tailwindcss";
 
-/*Custom font style, family served from a local file*/
-@font-face {
-  font-family: dmSans;
-  font-display: swap;
-  font-style: normal;
-  font-weight: 400 600 700;
-  src: url("./assets/fonts/DM_Sans/DMSans-VariableFont_opsz,wght.ttf");
-}
-
 @layer base {
   button {
     cursor: pointer;
@@ -114,4 +105,6 @@
   --text-preset-4--letter-spacing: -0.6px;
 
   --breakpoint-xxl: 90rem;
+
+  --font-sans: "DM Sans Variable", system-ui, sans-serif;
 }
