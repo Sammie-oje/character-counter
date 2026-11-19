@@ -1,7 +1,7 @@
 import DensityList from "./DensityList.jsx";
 import ToggleList from "./ToggleList.jsx";
 import { useState } from "react";
-import { motion } from "motion/react";
+import { m} from "motion/react";
 
 const listVariant = {
     expand: {
@@ -37,7 +37,7 @@ function LetterDensity({ charDensity }) {
         <div className="flex flex-col gap-250 dark:text-neutral-200">
             <h3 className="text-preset-2">Letter Density</h3>
 
-            <motion.dl
+            <m.dl
                 className={`flex flex-col gap-150 overflow-hidden`}
                 variants={listVariant}
                 animate={isExpanded ? "expand" : "shrink"}
@@ -58,7 +58,7 @@ function LetterDensity({ charDensity }) {
                         No characters found. Start typing to see letter density.
                     </p>
                 )}
-            </motion.dl>
+            </m.dl>
 
             {charDensity.length > 5 && (
                 <ToggleList

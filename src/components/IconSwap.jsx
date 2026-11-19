@@ -1,4 +1,4 @@
-import { AnimatePresence, motion, useReducedMotion } from "motion/react";
+import { AnimatePresence, m, useReducedMotion } from "motion/react";
 
 export function IconSwap({
   isActive,
@@ -24,7 +24,7 @@ export function IconSwap({
       className={`inline-grid place-items-center ${className}`}
     >
       <AnimatePresence initial={false}>
-        <motion.span
+        <m.span
           className="row-start-1 col-start-1"
           key={isActive ? "active" : "idle"}
           initial={hidden}
@@ -36,7 +36,7 @@ export function IconSwap({
           }}
         >
           {isActive ? activeIcon : icon}
-        </motion.span>
+        </m.span>
       </AnimatePresence>
     </span>
   );

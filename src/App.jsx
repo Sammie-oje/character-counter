@@ -9,7 +9,7 @@ function App() {
       <Header />
 
       <div className="p-200 flex justify-center md:flex-col md:items-center md:p-0">
-        <h1 className="font-bold text-preset-mobile text-center md:text-preset-1 md:max-w-lg dark:text-neutral-100">
+        <h1 className="font-sans font-bold text-preset-mobile text-center md:text-preset-1 md:max-w-lg dark:text-neutral-100">
           Analyze your text in real-time.
         </h1>
       </div>

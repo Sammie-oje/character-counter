@@ -1,6 +1,6 @@
 import { useState, useEffect, useLayoutEffect, useRef } from "react";
 import {
-  motion,
+  m,
   AnimatePresence,
   useMotionValue,
   animate,
@@ -77,7 +77,7 @@ function TextInput() {
 
   return (
     <div className="flex flex-col gap-150">
-      <motion.section
+      <m.section
         className={`flex flex-col bg-neutral-100 border-2 border-neutral-200 rounded-12 z-200 dark:bg-neutral-800 dark:border-neutral-700 ${isExpanded ? "absolute inset-0 z-200" : "w-full h-full"}`}
         style={{ x: shakeX, viewTransitionName: "text-input" }}
       >
@@ -111,11 +111,11 @@ function TextInput() {
           value={value}
           onChange={onFormData}
         ></textarea>
-      </motion.section>
+      </m.section>
 
       <AnimatePresence>
         {isOverLimit && (
-          <motion.p
+          <m.p
             role="alert"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
@@ -128,7 +128,7 @@ function TextInput() {
             <span>
               Limit reached! Your text exceeds {characterLimit} characters
             </span>
-          </motion.p>
+          </m.p>
         )}
       </AnimatePresence>
     </div>

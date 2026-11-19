@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { motion, useReducedMotion } from "motion/react";
+import { m, useReducedMotion } from "motion/react";
 
 const EASE = [0.22, 1, 0.36, 1];
 
@@ -27,7 +27,7 @@ export function Checkbox({ name, id, value, onChangeData, label }) {
       />
       <div aria-hidden="true" className="checkbox">
         <svg width="10" height="10" viewBox="0 0 10.1668 10.1668" fill="none">
-          <motion.path
+          <m.path
             d="M1 5.52L3.92 9.17L9.17 1"
             stroke="currentColor"
             strokeWidth="2"

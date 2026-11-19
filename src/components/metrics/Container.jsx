@@ -1,6 +1,5 @@
-import LetterDensity from "./letter-list/LetterDensity.jsx";
 import Stat from "./Stat.jsx";
-
+import LetterDensity from "./letter-list/LetterDensity.jsx";
 import { useForm } from "../../contexts/FormContext.jsx";
 
 function StatDensityContainer() {
